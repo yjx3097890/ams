@@ -20,8 +20,7 @@ export class HeroDetailComponent implements OnInit {
     constructor(
         private heroService: HeroService,
         private route: ActivatedRoute,
-        private location: Location,
-        private router: Router
+        private location: Location
     ) {
 
     }
@@ -32,14 +31,7 @@ export class HeroDetailComponent implements OnInit {
             .subscribe(hero => this.hero = hero);
     }
 
-    save(): void {
-        this.heroService.update(this.hero)
-            .subscribe(() => this.goBack());
-    }
 
-    goBack(): void {
-       // this.location.back();
-        this.router.navigate(['/heroes', { id: this.hero.id, foo: 'foo' }]);
-    }
+
 
 }

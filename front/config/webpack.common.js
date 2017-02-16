@@ -2,7 +2,6 @@
 
 const webpack = require('webpack');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -33,7 +32,7 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                include: [absolutePath('front/src/public')],
+                exclude: [absolutePath('front/src/app.html')],
                 use:[
                     'html-loader'
                 ]
@@ -55,7 +54,7 @@ module.exports = {
                 use:  ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader'] })
             },
             {
-                test: /\.(html|css)$/,
+                test: /\.css$/,
                 exclude: [absolutePath('front/src/public')],
                 use: [
                     'raw-loader'

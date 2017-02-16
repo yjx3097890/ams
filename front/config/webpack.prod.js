@@ -4,7 +4,7 @@ const webpackMerge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const commonConfig = require('./webpack.common.js');
 const absolutePath = require('./../src/others/utils').absolutePath;
-const entries = require('./src/utils/utils').getEntries();
+const entries = require('../src/others/utils').getEntries();
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 
@@ -30,4 +30,4 @@ module.exports = webpackMerge(commonConfig, {
             }
         })
     ]
-}, entries);
+}, ...entries);

@@ -3,11 +3,10 @@
 <ul class="heroes">
     <li *ngFor="let hero of heroes"
         [class.selected]="hero === selectedHero"
-        (click)="onSelect(hero)"
-    >
+        (click)="onSelect(hero)">
 
 
-            <span class="badge">{{hero.id}}</span> {{hero.name}}
+            <span class="badge">{{hero.id}} </span> {{hero.name}}
 
     </li>
 </ul>
@@ -16,6 +15,6 @@
         {{selectedHero.name | uppercase}} is my hero
     </h2>
     <button (click)="gotoDetail()">View Details</button>
-    <a [routerLink]="['/hero', selectedHero.id]">View Details2</a>
+    <a >View Details2</a>
 </div>
 <hero-search></hero-search>

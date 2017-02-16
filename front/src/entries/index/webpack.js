@@ -1,10 +1,10 @@
-const absolutePath = require('../../utils/utils').absolutePath;
+const absolutePath = require('../../others/utils').absolutePath;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
   entry: {
-      index: absolutePath('front/src/entries/index/index.ts'),
+      index: absolutePath('front/src/entries/index/module.ts'),
   },
   plugins: [
       new HtmlWebpackPlugin({  //自动 注入生成的 script 和 link 标签。使用output的 publicPath 和 filename

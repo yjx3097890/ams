@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router }            from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
 
@@ -20,8 +19,7 @@ export class HeroSearchComponent implements OnInit {
     private searchTerms = new Subject<string>();
 
     constructor(
-        private HeroService: HeroService,
-        private router: Router
+        private HeroService: HeroService
     ) {}
 
     // Push a search term into the observable stream.
@@ -46,6 +44,5 @@ export class HeroSearchComponent implements OnInit {
 
     gotoDetail(hero: Hero): void {
         let link = ['/hero', hero.id];
-        this.router.navigate(link);
     }
 }

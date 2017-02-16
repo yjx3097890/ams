@@ -1,5 +1,6 @@
 'use strict';
 const path = require('path');
+const fs = require('fs');
 const _root = path.resolve(__dirname, '../../../');
 
 exports.absolutePath = function (src) {

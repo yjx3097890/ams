@@ -1,8 +1,5 @@
-/**
- * Created by apple on 16/5/14.
- */
+
 import {Component, OnInit} from "@angular/core";
-import {Router, ActivatedRoute, Params} from "@angular/router";
 import { Observable } from 'rxjs';
 
 import  Hero from '../../models/Hero';
@@ -11,7 +8,7 @@ import {HeroService} from '../../service/HeroService';
 
 @Component({
     moduleId: String(module.id),
-    selector: 'hero-list', //没用。。
+    selector: 'hero-list',
     templateUrl: './heroList.html',
     styleUrls: ['./heroList.css']
 })
@@ -23,18 +20,11 @@ export class HeroListComponent implements OnInit{
     selectedId: number;
 
     constructor(
-        private heroService: HeroService,
-        private router: Router,
-        private route: ActivatedRoute
+        private heroService: HeroService
     ) { }
 
     ngOnInit() {
-       this.route.params
-            .switchMap((params: Params) => {
-                this.selectedId = +params['id'];
-                return this.getHeroes();
-
-            }).subscribe(heroes => {
+       this.getHeroes().subscribe(heroes => {
                this.heroes = heroes;
                this.selectedHero = heroes.find((hero)=> this.selectedId === hero.id);
            }, error =>
@@ -78,6 +68,6 @@ export class HeroListComponent implements OnInit{
     }
 
     gotoDetail(): void {
-        this.router.navigate(['/hero', this.selectedHero.id]);
+
     }
 }

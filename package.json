@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "angular2-template-loader": "^0.6.2",
+    "apidoc": "^0.17.5",
     "awesome-typescript-loader": "^3.0.4-rc.2",
     "clean-webpack-plugin": "^0.1.15",
     "copy-webpack-plugin": "^4.0.1",

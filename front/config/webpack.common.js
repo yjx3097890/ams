@@ -11,7 +11,8 @@ const absolutePath = require('../src/others/utils').absolutePath;
 module.exports = {
     entry: {
         'polyfills': absolutePath('front/src/others/polyfills.ts'),
-        'vendor': absolutePath('front/src/others/vendor.ts')
+        'vendor': absolutePath('front/src/others/vendor.ts'),
+        'app': absolutePath('front/src/main.ts')
     },
 
     resolve: {
@@ -33,7 +34,7 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                include: [absolutePath('front/src/public')],
+                exclude: [absolutePath('front/src/app.html')],
                 use:[
                     'html-loader'
                 ]
@@ -55,7 +56,7 @@ module.exports = {
                 use:  ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader'] })
             },
             {
-                test: /\.(html|css)$/,
+                test: /\.css$/,
                 exclude: [absolutePath('front/src/public')],
                 use: [
                     'raw-loader'
@@ -69,7 +70,7 @@ module.exports = {
             root: absolutePath('/')
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['vendor', 'polyfills'],
+            name: ['app','vendor', 'polyfills'],
             minChunks: Infinity
         }),
         new CopyWebpackPlugin([
@@ -87,6 +88,10 @@ module.exports = {
             }
         ], {
             copyUnmodified: false
+        }),
+        new HtmlWebpackPlugin({
+            template: absolutePath('front/src/app.html'),
+            title: '综合档案管理应用系统'
         })
     ]
 };

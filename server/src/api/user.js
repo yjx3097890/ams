@@ -28,6 +28,7 @@ router.post('/login', function* (next) {
         this.session.user = result.user;
         userService.registerLogin(result.user.id);
     }
+    this.status = 200;
     this.body = result;
 
 });
@@ -44,6 +45,7 @@ router.post('/login', function* (next) {
  */
 router.get('/logout',function* (next){
     this.session.user = null;
+    this.status = 200;
     this.body = {ok:true};
 });
 
@@ -66,6 +68,7 @@ router.get('/logout',function* (next){
  */
 router.get('/current', function* (next) {
 
+
     this.body = this.session.user;
 
 });
@@ -84,6 +87,7 @@ router.get('/current', function* (next) {
  *
  */
 router.get('/', auth(auth.admin), function *(next) {
+    this.status = 200;
     this.body = yield userService.query(this.query);
 });
 
@@ -106,6 +110,7 @@ router.get('/', auth(auth.admin), function *(next) {
  *
  */
 router.get('/:id', auth(auth.admin), function* (next) {
+    this.status = 200;
     this.body = yield userService.getById(this.params.id);
 });
 
@@ -133,6 +138,7 @@ router.get('/:id', auth(auth.admin), function* (next) {
  *
  */
 router.post('/', function *(next) {
+    this.status = 200;
     this.body = yield userService.create(this.request.body);
 });
 
@@ -153,6 +159,7 @@ router.post('/', function *(next) {
  */
 router.put('/', auth(auth.user), function *(next) {
     let id = this.session.user.id;
+    this.status = 200;
     this.body = yield* userService.updateById(id, this.request.body);
 });
 
@@ -168,7 +175,9 @@ router.put('/', auth(auth.user), function *(next) {
  *
  */
 router.del('/:id', auth(auth.admin), function *(next) {
+
     yield* userService.deleteById(this.params.id);
+    this.status = 200;
     this.body = {ok:true}
 });
 

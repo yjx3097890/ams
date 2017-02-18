@@ -13,8 +13,8 @@ import { AdminModule } from './admin.module';
 
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, AppRoutingModule, HttpModule,
-      HeroModule, CrisisModule, AdminModule, AuthModule],
+  imports:      [ BrowserModule, FormsModule, HttpModule,
+      HeroModule, CrisisModule, AdminModule, AuthModule, AppRoutingModule],
   declarations: [ AppComponent ],
   providers: [DialogService],
   bootstrap:    [ AppComponent ]

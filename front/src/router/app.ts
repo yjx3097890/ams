@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
+    //TODO  {
+    //     path: '**',
+    //     component: PageNotFoundComponent
+    // }
 ];
 
 @NgModule({

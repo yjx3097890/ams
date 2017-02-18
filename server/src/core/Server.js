@@ -138,8 +138,19 @@ module.exports = class Server {
     }
 
     loadStatic() {
+
+        const spa = require('koa-spa');
+        const routes = ['((?!api).)*'];
+
+
+        this.app.use(spa(this.config.frontPath, {
+            index: 'index.html',
+            routeBase: '/',
+            routes: routes
+        }));
+
         const server = require('koa-static');
-        this.app.use(server(this.config.frontPath));
+       // this.app.use(server(this.config.frontPath));
     }
 
 
@@ -149,7 +160,7 @@ module.exports = class Server {
     handleError() {
         const errorHandle = require('koa-error');
         this.app.use(errorHandle({
-            template: path.join(this.utils.getProjectRoot(), 'public/error.html')
+            template: this.config.errorPage
         }));
     }
 

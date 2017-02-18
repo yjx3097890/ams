@@ -60,8 +60,9 @@ config.dbDevelopConfig ={
 };
 
 
-config.uploadPath = path.join(__dirname, '../uploads');   //调用文件的相对路径
-config.tempPath = path.join(__dirname, '../temp');
+config.uploadPath = path.join(__dirname, '../../uploads');   //调用文件的相对路径
+config.tempPath = path.join(__dirname, '../../temp');
+config.errorPage = path.join(__dirname, './others/error.html');
 
 config.host = "http://www.shambalavisual.com";
 

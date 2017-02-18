@@ -149,7 +149,7 @@ module.exports = class Server {
             routes: routes
         }));
 
-        const server = require('koa-static');
+       //  const server = require('koa-static');
        // this.app.use(server(this.config.frontPath));
     }
 
